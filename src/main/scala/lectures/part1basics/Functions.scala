@@ -85,7 +85,7 @@ object Functions extends App {
     @tailrec
     def fibonacciTailRecUtil(n: Int, acc: BigInt): BigInt = {
       if (n <= 2) acc
-      else fibonacciTailRecUtil(n - 1, acc)
+      else fibonacciTailRecUtil(n - 1, acc + fibonacciTailRec(n - 2))
     }
     if (n <= 0) 0
     else fibonacciTailRecUtil(n, 1)

@@ -52,4 +52,21 @@ object Expressions extends App {
     if (z > 2) "hello" else "goodbye"
   }
 
+  // 1. What is the difference between "hello world" and println("hello world")
+      // "hello world" - String type and println("hello world") - Unit type
+  // 2. What is the value of the code bellow
+      // First block: true
+      // Second block 42
+
+  val someValue = {
+    2 < 3
+  }
+  println(someValue)
+
+  val someOtherValue = {
+    if (someValue) 239 else 986
+    42
+  }
+  println(someOtherValue)
+
 }

@@ -5,7 +5,7 @@ import scala.language.postfixOps
 
 object Notations extends App {
 
-  class Person(val name: String, favoriteMovie: String) {
+  class Person(val name: String, favoriteMovie: String, val age: Int = 0) {
 
     def likes(movie: String): Boolean = movie == favoriteMovie
 
@@ -17,7 +17,17 @@ object Notations extends App {
 
     def apply(): String = s"Hi, my name is $name and I like $favoriteMovie"
 
+    // 1.
+    def + (nickname: String): Person = new Person(s"$name ($nickname)", favoriteMovie)
+    // 2.
+    def unary_+ : Person = new Person(name, favoriteMovie, age + 1)
 
+    // 3.
+    def learns(thing: String) = s"$name is learning $thing"
+    def learnsScala = this learns "Scala"
+
+    // 4.
+    def apply(n: Int): String = s"$name watched $favoriteMovie $n times"
   }
 
   val mary = new Person("Mary", "Inception")
@@ -50,4 +60,35 @@ object Notations extends App {
   // apply
   println(mary.apply())
   println(mary())
+
+  /*
+    1. Overload the + operator
+        mary + "the rockstar" => new person "Mary (the rockstar)"
+
+    2. Add age to the Person class
+       Add a unary + operator => new person with the age + 1
+        +mary => mary with the age incremented '++'
+
+    3. Add a "learns" method in the Person class => "Mary learns Scala"
+       Add a learnsScala method, calls learns method with "Scala" as a parameter
+       Use it in postfix notation
+
+    4. Overload the apply method
+       mary.apply(2) => "Mary watched Inception 2 times"
+  * */
+
+  // 1.
+  println((mary + "the Rockstar").apply())
+
+  // 2.
+  println((+mary).age)
+
+  // 3.
+  println(mary learns "Scala")
+  println(mary learnsScala)
+
+  // 4.
+  println(mary.apply(2))
+  println(mary(10))
+
 }

@@ -49,8 +49,9 @@ object WhatsAFunction extends App {
   println(adder3(4))
   println(superAdder(3)(4)) // curried function
 
+
+  trait MyFunction[A, B] {
+    def apply(elem: A): B
+  }
 }
 
-trait MyFunction[A, B] {
-  def apply(elem: A): B
-}

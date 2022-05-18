@@ -45,7 +45,7 @@ case object Empty extends MyList[Nothing] {
 
   override def isEmpty: Boolean = true
 
-  override def add[B >: Nothing](element: B): MyList[B] = new Cons(element, Empty)
+  override def add[B >: Nothing](element: B): MyList[B] = Cons(element, Empty)
 
   override def printElements: String = ""
 
@@ -66,7 +66,7 @@ case class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
 
   override def isEmpty: Boolean = false
 
-  override def add[B >: A](element: B): MyList[B] = new Cons(element, this)
+  override def add[B >: A](element: B): MyList[B] = Cons(element, this)
 
   override def printElements: String = {
     if (t.isEmpty) "" + h
@@ -93,7 +93,7 @@ case class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
       = new Cons(2, new Cons(4, new Cons(6, Empty)))
   * */
   override def map[B](transformer: A => B): MyList[B] =
-    new Cons(transformer(h), t.map(transformer))
+    Cons(transformer(h), t.map(transformer))
 
 
   /*

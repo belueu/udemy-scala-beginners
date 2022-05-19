@@ -197,4 +197,16 @@ object ListTest extends App {
   println(listOfIntegers.fold(0)((x, y) => x + y))
   // equivalent to ^^
   println(listOfIntegers.fold(0)(_ + _)) // fold or reduce - collapse data into one single value
+
+  // for-comprehensions
+  val combos = for {
+    n <- listOfIntegers
+    string <- listOfStrings
+  } yield n + "-" + string
+
+  println(combos)
+  println(for {
+    n <- listOfIntegers
+    string <- listOfStrings
+  } yield n + "-" + string)
 }
